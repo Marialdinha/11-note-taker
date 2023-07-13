@@ -1,0 +1,25 @@
+{
+  "name": "11-note-taker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marialdinha/11-note-taker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Marialdinha/11-note-taker/issues"
+  },
+  "homepage": "https://github.com/Marialdinha/11-note-taker#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "uuid": "^9.0.0"
+  }
+}
