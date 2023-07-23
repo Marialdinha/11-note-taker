@@ -8,10 +8,11 @@
   - [Contact](#contact)
  
 ## Description
-This application uses Express back end and will save and retrieve note data from a JSON file.
+This application uses Express back end and will save, retrieve and delete note data from a JSON file.
 
 <a name="deployed"></a>
 ## Deployed Application Link
+https://marialda-note-taker-3d3415ca35ff.herokuapp.com/
 
 ## Screenshots
 
