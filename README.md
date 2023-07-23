@@ -10,7 +10,7 @@
 ## Description
 This application uses Express back end and will save and retrieve note data from a JSON file.
 
-<a name="deloyed"></a>
+<a name="deployed"></a>
 ## Deployed Application Link
 
 ## Screenshots
