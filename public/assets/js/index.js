@@ -147,7 +147,7 @@ const renderNoteList = async (notes) => {
         'delete-note'
       );
       delBtnEl.addEventListener('click', handleNoteDelete);
-
+      
       liEl.append(delBtnEl);
     }
 

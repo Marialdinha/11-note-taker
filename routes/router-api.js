@@ -1,21 +1,21 @@
-const routerExpress = require('express').Router();
+const routerApi = require('express').Router();
 const fs = require("fs");
 const {v4: uuidv4} = require('uuid');
 
 const dbFile = "./db/db.json";
 
-routerExpress.get('/api/notes', (req, res) => {  
+routerApi.get('/api/notes', (req, res) => {  
     fs.readFile(dbFile, 'utf8',function(err, data) {
         if (err) {console.log(err);}
   
         let notes = JSON.parse(data);
-        console.log("Data R E A D")
-        console.log(data)
         res.json(notes);
     })
+    // let notes = JSON.parse(readData());
+    // res.json(notes);
   });
 
-  routerExpress.post('/api/notes', (req, res) => {
+routerApi.post('/api/notes', (req, res) => {
     let newNotes = {
       id: uuidv4(),
       title: req.body.title,
@@ -24,11 +24,7 @@ routerExpress.get('/api/notes', (req, res) => {
     fs.readFile(dbFile,'utf8', function(err, data) {
       if (err) {console.log(err);}
       let notes = JSON.parse(data);
-      console.log("Data Before")
-      console.log(notes)
       notes.push(newNotes)
-      console.log("Data After")
-      console.log(notes)
       fs.writeFile(dbFile, JSON.stringify(notes), (err) => {
         if (err) {console.log(err)}
         console.log("Notes saved")
@@ -36,5 +32,28 @@ routerExpress.get('/api/notes', (req, res) => {
     })
 });
 
+routerApi.delete('/api/notes', (req, res) => {
+  fs.readFile(dbFile,'utf8', function(err, data) {
+    if (err) {console.log(err);}
+    let notes = JSON.parse(data);
+    const newNotes = dataJSON.filter((notes) => { 
+      return notes.id !== req.params.id;
+    });
+    fs.writeFileSync(dbFile, JSON.stringify(newNotes), (err) => {
+      if (err) {console.log(err)}
+      console.log("Notes deleted")
+    })
+})
 
-module.exports = routerExpress;
+ });
+
+const readData = () =>{
+  fs.readFile(dbFile, 'utf8',function(err, data) {
+    if (err) {console.log(err);}
+
+    console.log("Reading data")
+    return data;
+})
+}
+
+module.exports = routerApi;
