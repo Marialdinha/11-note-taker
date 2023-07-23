@@ -11,11 +11,6 @@ routerApi.get('/api/notes', (req, res) => {
         let notes = JSON.parse(data);
         res.json(notes);
     })
-    // let notesData = readData();
-    // console.log("Inside get route")
-    // console.log (Promise.resolve(notesData))
-    // // let notes = JSON.parse(readData());
-    // // res.json(notes);
   });
 
 routerApi.post('/api/notes', (req, res) => {
@@ -30,7 +25,6 @@ routerApi.post('/api/notes', (req, res) => {
       notes.push(newNotes)
       fs.writeFile(dbFile, JSON.stringify(notes), (err) => {
         if (err) {console.log(err)}
-        console.log("Notes saved")
       })
     })
 });
@@ -42,21 +36,11 @@ routerApi.delete('/api/notes/:id', (req, res) => {
     const newNotes = notes.filter((note) => { 
       return note.id !== req.params.id;
     });
-
-    console.log(newNotes);
     fs.writeFileSync(dbFile, JSON.stringify(newNotes), (err) => {
       if (err) {console.log(err)}
-      console.log("Notes deleted")
     })
 })
 
  });
-
-const readData = async () =>{
-  let notes = await fs.readFileSync(dbFile, 'utf8') 
-  console.log("Inside readData function")
-console.log(notes);
-return notes;
-}
 
 module.exports = routerApi;

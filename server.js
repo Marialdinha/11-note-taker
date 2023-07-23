@@ -4,7 +4,7 @@ const api = require("./routes/router-api")
 const path = require('path');
 
 // Specify on which port the Express.js server will run
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 // Initialize an instance of Express.js
 const app = express();
 
